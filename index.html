@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>丸徳翻訳</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#0078d7">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+        <span class="marutoku">徳</span>
+        丸徳翻訳
+    </h1>
+
+    <select id="langMode">
+        <option value="ja-en">日本語 → 英語</option>
+        <option value="en-ja">英語 → 日本語</option>
+    </select>
+
+    <textarea
+        id="inputText"
+        placeholder="入力してください"
+    ></textarea>
+
+    <button onclick="clearInput()">
+        🧹 クリア
+    </button>
+
+    <button onclick="translateText()">
+        翻訳する
+    </button>
+
+    <div id="result">
+        ここに翻訳結果が表示されます
+    </div>
+
+    <button id="copyBtn" onclick="copyResult()">
+        📋 コピー
+    </button>
+
+    <button onclick="speakResult()">
+        🔊 読み上げ
+    </button>
+
+    <button onclick="stopSpeech()">
+        ⏹ 停止
+    </button>
+
+    <button onclick="addFavorite()">
+        ⭐ お気に入り
+    </button>
+
+    <button id="darkBtn" onclick="toggleDarkMode()">
+        🌙 ダークモード
+    </button>
+
+    <h2>翻訳履歴</h2>
+
+    <button class="delete-btn" onclick="clearHistory()">
+        履歴削除
+    </button>
+
+    <ul id="history"></ul>
+
+    <div class="favorites-header">
+        <h2>お気に入り</h2>
+
+        <button onclick="clearFavorites()">
+            🗑️ 全削除
+        </button>
+    </div>
+
+    <ul id="favorites"></ul>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js");
+    });
+}
+</script>
+
+</body>
+</html>
