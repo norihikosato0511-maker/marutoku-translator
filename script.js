@@ -47,6 +47,8 @@ async function translateText() {
         document.getElementById("result")
             .textContent = result;
 
+        alert("翻訳完了");
+
         saveHistory(text, result);
 
     } catch (error) {
